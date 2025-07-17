@@ -1,0 +1,33 @@
+/* ==========================================================================
+   1. Variáveis e Estilos Globais
+   ========================================================================== */
+:root {
+    --cor-primaria-cinza: #333333;
+    --cor-secundaria-preto: #000000;
+    --cor-destaque-vermelho: #CC0000;
+    --cor-vermelho-hover: #a30000;
+    --cor-fundo-header: #FFFFFF;
+    --cor-fundo-claro: #FFFFFF;
+    --cor-texto-claro: #FFFFFF;
+    --cor-texto-escuro: #333333;
+    --cor-cinza-medio: #707070;
+    --cor-cinza-claro: #f4f4f4;
+    --cor-borda-sutil: #e9ecef;
+    --cor-verde-remineralizador: #2c6b2f;
+
+    --fonte-titulos: 'Montserrat', sans-serif;
+    --fonte-corpo: 'Open Sans', sans-serif;
+
+    --largura-container: 1140px;
+    --altura-cabecalho: 70px;
+}
+
+/* Reset básico e configuração da fonte principal */
+body {
+  margin: 0;
+  font-family: var(--fonte-corpo);
+  background-color: var(--cor-fundo-claro);
+  color: var(--cor-texto-escuro);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}

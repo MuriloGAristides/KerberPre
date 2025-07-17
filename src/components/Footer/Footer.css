@@ -1,0 +1,223 @@
+/* =========================
+   FOOTER - TEMA PRETO (FINAL)
+========================= */
+
+/* --- ESTRUTURA PRINCIPAL --- */
+.footer {
+  background-color: #1a1a1a; /* Um preto um pouco mais suave */
+  color: #a9a9a9; /* Cor de texto padrão (cinza claro) */
+  font-size: 14px;
+  position: relative;
+}
+
+.footer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 0.5px; /* Aumenta a espessura da linha superior */
+  background: var(--cor-destaque-vermelho); /* Linha vermelha sólida no topo */
+}
+
+.footer-top {
+  padding: 60px 20px 40px;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  /* 4 colunas para manter a organização */
+  grid-template-columns: 1.5fr 1fr 1.5fr 1fr;
+  gap: 40px;
+  align-items: start;
+}
+
+/* --- COLUNA DA MARCA (ESQUERDA) --- */
+.footer-brand {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.footer-logo {
+  height: 50px; /* Ajuste no tamanho do logo */
+  filter: brightness(0) invert(1); /* Transforma o logo em branco */
+}
+
+.footer-impact {
+  font-size: 15px;
+  line-height: 1.6;
+  max-width: 300px;
+  color: #ccc;
+}
+
+/* --- COLUNAS GERAIS (NAVEGAÇÃO, CONTATO, SIGA-NOS) --- */
+.footer-column h4 {
+  font-family: var(--fonte-titulos);
+  font-weight: 700;
+  font-size: 18px;
+  color: #ffffff;
+  margin-top: 0;
+  margin-bottom: 25px;
+  position: relative;
+  padding-bottom: 10px;
+}
+
+/* Linha vermelha abaixo dos títulos */
+.footer-column h4::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 40px;
+  height: 2px;
+  background-color: var(--cor-destaque-vermelho);
+}
+
+.footer-column ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-column li {
+  margin-bottom: 12px;
+}
+
+.footer-column a {
+  color: #a9a9a9;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.footer-column a:hover {
+  color: #ff0000;
+}
+
+/* --- SEÇÃO DE CONTATO --- */
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.contact-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+  font-size: 14px;
+}
+
+.contact-item i {
+  color: var(--cor-destaque-vermelho);
+  font-size: 16px;
+  line-height: 1.5;
+  width: 18px;
+  text-align: center;
+  margin-top: 2px;
+}
+
+.contact-item a {
+  color: #a9a9a9;
+}
+
+.contact-item a:hover {
+  color: #ff0000;
+  text-decoration: underline;
+}
+
+/* --- ÍCONES DE REDES SOCIAIS --- */
+.footer-social {
+  display: flex;
+  gap: 15px;
+  margin-top: 10px;
+}
+
+.footer-social a {
+  color: #a9a9a9;
+  background-color: transparent;
+  border: 1px solid #555;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+
+.footer-social a:hover {
+  background-color: var(--cor-destaque-vermelho);
+  border-color: var(--cor-destaque-vermelho);
+  color: #fff;
+  transform: translateY(-3px);
+}
+
+/* --- RODAPÉ INFERIOR (COPYRIGHT) --- */
+.footer-bottom {
+  margin-top: 40px;
+  padding: 20px;
+  border-top: 1px solid #333; /* Linha divisória mais escura */
+  background-color: #000000;
+}
+
+.footer-bottom-content {
+  max-width: var(--largura-container);
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 15px;
+  color: #888;
+  font-size: 13px;
+}
+
+.footer-bottom-content a {
+  color: #bbb;
+  text-decoration: none;
+}
+
+.footer-bottom-content a:hover {
+  color: var(--cor-destaque-vermelho);
+}
+
+/* =========================
+   RESPONSIVIDADE DO RODAPÉ
+========================= */
+@media (max-width: 992px) {
+  .footer-container {
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+  }
+}
+
+@media (max-width: 768px) {
+  .footer-top {
+    padding: 50px 20px 30px;
+  }
+  .footer-container {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    text-align: center;
+  }
+  .footer-brand, .footer-social {
+    align-items: center;
+    justify-content: center;
+  }
+  .footer-column h4::after {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .contact-item {
+    justify-content: center;
+    text-align: left;
+  }
+  .footer-bottom-content {
+    flex-direction: column;
+    gap: 15px;
+  }
+}

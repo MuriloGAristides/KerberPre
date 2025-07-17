@@ -1,0 +1,344 @@
+/* =======================================================
+   ESTADO PADRÃO E DE ROLAGEM DO HEADER
+======================================================= */
+.site-header {
+    height: var(--altura-cabecalho);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background-color: var(--cor-fundo-header);
+    border-bottom: 1px solid var(--cor-borda-sutil);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    transition: background-color 0.4s ease, box-shadow 0.4s ease, backdrop-filter 0.4s ease, border-color 0.4s ease;
+}
+
+.site-header.header-scrolled {
+    background-color: rgba(255, 255, 255, 0.85);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+    border-bottom-color: transparent;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* =======================================================
+   LAYOUT E NAVEGAÇÃO GERAL
+======================================================= */
+.site-header .container {
+    max-width: var(--largura-container);
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+    padding: 0 20px;
+}
+
+.logo img {
+    height: 45px;
+    width: auto;
+    vertical-align: middle;
+}
+
+.main-nav>ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.main-nav li {
+    position: relative;
+}
+
+.main-nav a {
+    text-decoration: none;
+    color: var(--cor-texto-escuro);
+    font-weight: 600;
+    font-size: 16px;
+    padding-bottom: 5px;
+    transition: color 0.3s ease;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.main-nav a:hover,
+.main-nav a.active {
+    color: var(--cor-destaque-vermelho);
+}
+
+.main-nav a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1.5px;
+    background-color: var(--cor-destaque-vermelho);
+    transform: scaleX(0);
+    transform-origin: bottom left;
+    transition: transform 0.3s ease-in-out;
+}
+
+.main-nav a.active::after,
+.main-nav a:hover::after {
+    transform: scaleX(1);
+}
+
+.desktop-arrow-icon {
+    margin-left: 8px;
+    font-size: 16px;
+    transition: transform 0.3s ease;
+}
+
+.has-submenu:hover .desktop-arrow-icon {
+    transform: rotate(180deg);
+}
+
+/* =======================================================
+   SUBMENUS (DESKTOP)
+======================================================= */
+.submenu {
+    list-style: none;
+    padding: 8px 0;
+    margin: 10px 0 0 0;
+    min-width: 280px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+    border: 1px solid var(--cor-borda-sutil);
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 1001;
+    visibility: hidden;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+    overflow: hidden;
+}
+
+.has-submenu:hover .submenu {
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.submenu li {
+    display: block;
+    width: 100%;
+}
+
+.submenu a {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 15px 20px;
+    color: var(--cor-texto-escuro);
+    font-size: 15px;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.submenu a:hover {
+    background-color: var(--cor-cinza-claro);
+    color: var(--cor-destaque-vermelho);
+}
+
+.submenu a.active {
+    color: var(--cor-destaque-vermelho);
+    font-weight: 700;
+}
+
+.submenu-icon {
+    margin-right: 12px;
+    font-size: 18px;
+    color: var(--cor-destaque-vermelho);
+    display: inline-flex;
+    align-items: center;
+}
+
+/* =======================================================
+   RESPONSIVIDADE E MENU MOBILE
+======================================================= */
+.mobile-submenu-trigger,
+.hamburger {
+    display: none;
+}
+
+@media (max-width: 992px) {
+    .hamburger {
+        display: block;
+        background: none;
+        border: none;
+        font-size: 30px;
+        cursor: pointer;
+        z-index: 1100;
+        color: var(--cor-primaria-cinza);
+    }
+
+    .has-submenu .desktop-link {
+        display: none;
+    }
+
+    .has-submenu .mobile-submenu-trigger {
+        display: flex;
+        justify-content: flex-start;
+        /* Alinha à esquerda */
+        align-items: center;
+        width: 100%;
+        background: none;
+        border: none;
+        font: inherit;
+        padding: 18px 20px;
+        text-align: left;
+        color: var(--cor-texto-escuro);
+        font-weight: 600;
+        gap: 8px;
+        /* Pequeno espaço entre ícone e texto */
+    }
+
+    /* Correção específica para ícones e texto */
+    .mobile-submenu-trigger i,
+    .main-nav a i {
+        margin-right: 0 !important;
+        /* Remove margem direita do ícone */
+        padding-right: 0 !important;
+        /* Remove padding direito do ícone */
+    }
+
+    /* Se estiver usando Font Awesome ou similar */
+    .mobile-submenu-trigger .fa,
+    .mobile-submenu-trigger .fas,
+    .mobile-submenu-trigger .far,
+    .mobile-submenu-trigger .fab,
+    .main-nav a .fa,
+    .main-nav a .fas,
+    .main-nav a .far,
+    .main-nav a .fab {
+        margin-right: 0 !important;
+        padding-right: 0 !important;
+    }
+
+    .main-nav {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 300px;
+        height: 100vh;
+        background-color: var(--cor-fundo-claro);
+        box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+        transition: right 0.4s ease-in-out;
+        z-index: 1050;
+        padding-top: var(--altura-cabecalho);
+        display: flex;
+        flex-direction: column;
+
+        /* NOVO: rolagem interna segura */
+        max-height: 150vh;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .main-nav.menu-aberto {
+        right: 0;
+    }
+
+    .main-nav>ul {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0;
+        width: 100%;
+        padding-top: 20px;
+    }
+
+    .main-nav li {
+        width: 100%;
+        border-bottom: 1px solid var(--cor-borda-sutil);
+    }
+
+    .main-nav a,
+    .mobile-submenu-trigger {
+        display: flex;
+        justify-content: flex-start;
+        /* Alinha à esquerda */
+        align-items: center;
+        padding: 18px 20px;
+        width: 100%;
+        box-sizing: border-box;
+        position: static;
+        gap: 8px;
+        /* Pequeno espaço entre ícone e texto */
+    }
+
+    /* Estrutura específica para ícone + texto */
+    .main-nav a>span,
+    .mobile-submenu-trigger>span {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        /* Pequeno espaço entre ícone e texto */
+    }
+
+    /* Se você tiver um elemento separado para a seta do submenu */
+    .mobile-submenu-trigger .submenu-arrow {
+        margin-left: auto;
+        /* Empurra a seta para a direita */
+    }
+
+    .main-nav a::after {
+        display: none;
+    }
+
+    .main-nav a.active,
+    .mobile-submenu-trigger.active {
+        color: var(--cor-destaque-vermelho);
+    }
+
+    .submenu {
+        display: none;
+        position: static;
+        box-shadow: none;
+        border: none;
+        border-radius: 0;
+        padding-left: 0px;
+        background-color: var(--cor-cinza-claro);
+        visibility: visible;
+        opacity: 1;
+        transform: none;
+        min-width: 100%;
+        max-height: 400px;
+        overflow-y: auto;
+        overscroll-behavior: contain;
+    }
+
+    .submenu-aberto .submenu {
+        display: block;
+    }
+
+    .has-submenu:hover .submenu {
+        display: none;
+    }
+
+    .submenu-aberto:hover .submenu {
+        display: block;
+    }
+
+    /* Ícone de seta no mobile */
+    .mobile-arrow-icon {
+        font-size: 16px;
+        margin-left: auto;
+        transition: transform 0.3s ease;
+    }
+
+    /* Animação de rotação ao abrir submenu */
+    .mobile-arrow-icon.aberto {
+        transform: rotate(180deg);
+    }
+}

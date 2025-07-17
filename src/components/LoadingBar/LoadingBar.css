@@ -1,0 +1,38 @@
+/* O container da barra, que ficará fixo no topo e desaparecerá depois */
+.loading-bar-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  z-index: 9999; /* Z-index mais alto de todos para ficar sobre tudo */
+
+  /* Animação para desaparecer depois de um tempo */
+  animation: fadeOut 0.5s ease-out 2s forwards;
+}
+
+/* A barra vermelha que será animada */
+.loading-bar-fill {
+  height: 100%;
+  width: 0%; /* Começa com largura 0 */
+  background-color: var(--cor-destaque-vermelho);
+  border-radius: 0 2px 2px 0;
+
+  /* Animação para crescer */
+  animation: load 1.5s ease-out forwards;
+}
+
+/* Animação de crescimento da barra */
+@keyframes load {
+  from { width: 0%; }
+  to { width: 100%; }
+}
+
+/* Animação para desaparecer o container */
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to { 
+    opacity: 0;
+    visibility: hidden; /* Garante que não atrapalhe os cliques */
+  }
+}

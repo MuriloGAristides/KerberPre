@@ -1,0 +1,26 @@
+/* Espaçamento para o conteúdo principal não ficar embaixo do header fixo */
+main {
+  padding-top: var(--altura-cabecalho);
+}
+
+
+
+/* O container do app começa invisível e posicionado */
+.app-container {
+  opacity: 0;
+  transition: opacity 0.8s ease-in;
+}
+
+/* Quando a classe 'visible' é adicionada, ele aparece suavemente */
+.app-container.visible {
+  opacity: 1;
+}
+
+/* O container da splash screen tem uma transição para desaparecer */
+.splash-container.hidden {
+  opacity: 0;
+  /* A transição de visibilidade garante que ele não possa mais ser clicado */
+  transition: opacity 0.5s ease-out, visibility 0s linear 0.5s;
+  visibility: hidden;
+  pointer-events: none;
+}
